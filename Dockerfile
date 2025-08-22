@@ -1,10 +1,9 @@
-
 # Base PHP 8.3 avec Apache
 FROM php:8.3-apache
 
 # Installer les dépendances système nécessaires à Laravel
 RUN apt-get update && apt-get install -y \
-    libpng-dev libjpeg-dev libfreetype6-dev zip unzip git curl libpq-dev \
+    libpng-dev libjpeg-dev libfreetype6-dev libzip-dev zip unzip git curl libpq-dev \
  && docker-php-ext-configure gd --with-freetype --with-jpeg \
  && docker-php-ext-install pdo pdo_mysql pdo_pgsql gd zip
 
@@ -19,7 +18,7 @@ COPY . .
 COPY --from=composer:2 /usr/bin/composer /usr/bin/composer
 RUN composer install --no-dev --optimize-autoloader --no-interaction --no-progress
 
-# Donner les permissions correctes pour Laravel
+# Permissions correctes pour Laravel
 RUN chown -R www-data:www-data /var/www/html/storage /var/www/html/bootstrap/cache \
  && chmod -R 775 /var/www/html/storage /var/www/html/bootstrap/cache
 
@@ -32,14 +31,12 @@ RUN echo "<VirtualHost *:80>\n\
     </Directory>\n\
 </VirtualHost>" > /etc/apache2/sites-available/000-default.conf
 
-# Copier et préparer le script de démarrage
+# Copier et rendre exécutable le script d'entrée
 COPY entrypoint.sh /entrypoint.sh
 RUN chmod +x /entrypoint.sh
 
 # Exposer le port 80
 EXPOSE 80
 
-# Lancer le script au démarrage (Composer, cache, migrations, Apache)
+# Lancer le script d'entrée au démarrage
 CMD ["/entrypoint.sh"]
-
-

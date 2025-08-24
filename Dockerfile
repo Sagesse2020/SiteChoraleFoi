@@ -10,12 +10,14 @@ RUN apt-get update && apt-get install -y \
 # Activer mod_rewrite pour Laravel
 RUN a2enmod rewrite
 
-# Copier le projet Laravel dans le conteneur
+# Installer Composer
+COPY --from=composer:2 /usr/bin/composer /usr/bin/composer
+
+# Copier le projet Laravel
 WORKDIR /var/www/html
 COPY . .
 
-# Installer Composer
-COPY --from=composer:2 /usr/bin/composer /usr/bin/composer
+# Installer les dépendances PHP
 RUN composer install --no-dev --optimize-autoloader --no-interaction --no-progress
 
 # Permissions correctes pour Laravel
@@ -30,6 +32,12 @@ RUN echo "<VirtualHost *:80>\n\
         Require all granted\n\
     </Directory>\n\
 </VirtualHost>" > /etc/apache2/sites-available/000-default.conf
+
+# Nettoyer cache Laravel pour éviter les erreurs de compilation
+RUN php artisan config:clear \
+ && php artisan route:clear \
+ && php artisan view:clear \
+ && php artisan cache:clear
 
 # Copier et rendre exécutable le script d'entrée
 COPY entrypoint.sh /entrypoint.sh

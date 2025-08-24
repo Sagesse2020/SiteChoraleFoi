@@ -188,27 +188,28 @@
   <nav>
     <div class="logo">Chorale Foi Parfaite</div>
     <ul>
-      <li><a href="{{ route('galeries.index') }}">Galeries</a></li>
-      <li><a href="{{ route('groupes_vocaux.index') }}">Groupes vocaux</a></li>
-      <li><a href="{{ route('choristes.index') }}">Choristes</a></li>
-      <li><a href="{{ route('login') }}">Se connecter</a></li>
-      <li><a href="{{ route('register') }}">S'inscrire</a></li>
-      <li class="nav-item">
-        <button class="dropdown-button">
-          <div class="icon-settings">
-            <div></div>
-            <div></div>
-            <div></div>
-          </div>
-        </button>
-        <ul class="dropdown-menu">
-          <li><a href="{{ route('mission') }}">Mission</a></li>
-          <li><a href="{{ route('historique') }}">Historique</a></li>
-          <li><a href="{{ route('vision') }}">Vision</a></li>
-          <li><a href="{{ route('infos') }}">Infos</a></li>
-        </ul>
-      </li>
+  <li><a href="{{ route('galeries.index') }}"><i class="fas fa-images"></i> Galeries</a></li>
+  <li><a href="{{ route('groupes_vocaux.index') }}"><i class="fas fa-users"></i> Groupes vocaux</a></li>
+  <li><a href="{{ route('choristes.index') }}"><i class="fas fa-microphone"></i> Choristes</a></li>
+  <li><a href="{{ route('login') }}"><i class="fas fa-sign-in-alt"></i> Se connecter</a></li>
+  <li><a href="{{ route('register') }}"><i class="fas fa-user-plus"></i> S'inscrire</a></li>
+  <li class="nav-item">
+    <button class="dropdown-button">
+      <div class="icon-settings">
+        <div></div>
+        <div></div>
+        <div></div>
+      </div>
+    </button>
+    <ul class="dropdown-menu">
+      <li><a href="{{ route('mission') }}"><i class="fas fa-bullseye"></i> Mission</a></li>
+      <li><a href="{{ route('historique') }}"><i class="fas fa-history"></i> Historique</a></li>
+      <li><a href="{{ route('vision') }}"><i class="fas fa-eye"></i> Vision</a></li>
+      <li><a href="{{ route('infos') }}"><i class="fas fa-info-circle"></i> Infos</a></li>
     </ul>
+  </li>
+</ul>
+
     <!-- Formulaire de déconnexion -->
     <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
       @csrf

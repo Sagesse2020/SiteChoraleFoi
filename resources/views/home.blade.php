@@ -133,6 +133,10 @@
                 display: flex;
             }
         }
+        .nav-links a i {
+        margin-right: 6px;
+        }
+
     </style>
 </head>
 <body>
@@ -143,12 +147,15 @@
             </a>
         </div>
         <nav class="nav-links">
-            <a href="{{ route('welcome') }}" class="{{ Request::route()->getName() == 'welcome' ? 'active' : '' }}">Accueil</a>
-            <a href="{{ route('publicites.index') }}">Publicités</a>
-            <a href="{{ route('publications.index') }}">Publications</a>
-            <a href="{{ route('evenements.index') }}" class="{{ Request::route()->getName() == 'evenements.index' ? 'active' : '' }}">Événements</a>
-            <a href="{{ route('profile') }}" class="{{ Request::route()->getName() == 'profile' ? 'active' : '' }}">Profil</a>
-            <a href="{{ route('logout') }}">Déconnexion</a>
+            <nav class="nav-links">
+            <a href="{{ route('welcome') }}"><i class="fas fa-home"></i> Accueil</a>
+            <a href="{{ route('publicites.index') }}"><i class="fas fa-bullhorn"></i> Publicités</a>
+            <a href="{{ route('publications.index') }}"><i class="fas fa-newspaper"></i> Publications</a>
+            <a href="{{ route('evenements.index') }}"><i class="fas fa-calendar-alt"></i> Événements</a>
+            <a href="{{ route('profile') }}"><i class="fas fa-user"></i> Profil</a>
+            <a href="{{ route('logout') }}"><i class="fas fa-sign-out-alt"></i> Déconnexion</a>
+        </nav>
+
         </nav>
     </header>
 

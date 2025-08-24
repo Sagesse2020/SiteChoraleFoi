@@ -52,6 +52,10 @@
             font-weight: 500;
             transition: color 0.3s;
         }
+        nav ul li a i {
+        margin-right: 8px;
+        }
+
 
         nav ul li a:hover {
             color: blue;
@@ -154,16 +158,17 @@
         <div class="logo"></div>
         <img src="{{ asset('') }}" alt="" class="logo">
         <ul>
-            <li><a class="nav-link @if(Request::route()->getName() == 'welcome') active @endif" aria-current="page" href="{{ route('welcome') }}">Accueil</a></li>
-            <li><a class="nav-link @if(Request::route()->getName() == 'app_accueilGroupe') active @endif" href="{{ route('app_accueilGroupe') }}">Groupes</a></li>
-            <li><a class="nav-link @if(Request::route()->getName() == 'app_accueilChoriste') active @endif" href="{{ route('app_accueilChoriste') }}">Choristes</a></li>
-            <li><a class="nav-link @if(Request::route()->getName() == 'app_accueilEvenement') active @endif" href="{{ route('app_accueilEvenement') }}">Evénéments</a></li>
-            <li><a class="nav-link @if(Request::route()->getName() == 'app_accueilGalerie') active @endif" href="{{ route('app_accueilGalerie') }}">Galeries</a></li>
-            <li><a class="nav-link @if(Request::route()->getName() == 'app_accueilPublicite') active @endif" href="{{ route('app_accueilPublicite') }}">Publicités</a></li>
-            <li><a class="nav-link @if(Request::route()->getName() == 'app_accueilPublication') active @endif" href="{{ route('app_accueilPublication') }}">Publications</a></li>
-            <li><a class="nav-link @if(Request::route()->getName() == 'users') active @endif" aria-current="page" href="{{ route('users') }}">Créer un utilisateur</a></li>
-            <li><a class="nav-link @if(Request::route()->getName() == 'profil') active @endif" aria-current="page" href="{{ route('profil') }}">Profil</a></li>
-            <li><a class="nav-link @if(Request::route()->getName() == 'statistiques.create') active @endif" aria-current="page" href="{{ route('statistiques') }}">Statistiques</a></li>
+    <li><a href="{{ route('welcome') }}"><i class="fas fa-home"></i> Accueil</a></li>
+    <li><a href="{{ route('app_accueilGroupe') }}"><i class="fas fa-users"></i> Groupes</a></li>
+    <li><a href="{{ route('app_accueilChoriste') }}"><i class="fas fa-microphone"></i> Choristes</a></li>
+    <li><a href="{{ route('app_accueilEvenement') }}"><i class="fas fa-calendar-alt"></i> Événements</a></li>
+    <li><a href="{{ route('app_accueilGalerie') }}"><i class="fas fa-images"></i> Galeries</a></li>
+    <li><a href="{{ route('app_accueilPublicite') }}"><i class="fas fa-bullhorn"></i> Publicités</a></li>
+    <li><a href="{{ route('app_accueilPublication') }}"><i class="fas fa-newspaper"></i> Publications</a></li>
+    <li><a href="{{ route('users') }}"><i class="fas fa-user-plus"></i> Créer un utilisateur</a></li>
+    <li><a href="{{ route('profil') }}"><i class="fas fa-user"></i> Profil</a></li>
+    <li><a href="{{ route('statistiques.create') }}"><i class="fas fa-chart-bar"></i> Statistiques</a></li>
+         </ul>
     </nav>
 
     <section class="hero">

@@ -74,4 +74,9 @@ class Kernel extends HttpKernel
     'LogVisit' => \App\Http\Middleware\LogVisit::class,
     // ...
       ];
+
+      protected $commands = [
+    \App\Console\Commands\FixStorageLink::class,
+    ];
+
 }

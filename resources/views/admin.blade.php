@@ -167,8 +167,9 @@
     <li><a href="{{ route('app_accueilPublication') }}"><i class="fas fa-newspaper"></i> Publications</a></li>
     <li><a href="{{ route('users') }}"><i class="fas fa-user-plus"></i> Créer un utilisateur</a></li>
     <li><a href="{{ route('profil') }}"><i class="fas fa-user"></i> Profil</a></li>
-    <li><a href="{{ route('statistiques.create') }}"><i class="fas fa-chart-bar"></i> Statistiques</a></li>
-         </ul>
+    <li><a href="{{ route('statistiques') }}"><i class="fas fa-chart-bar"></i> Statistiques</a></li>
+
+</ul>
     </nav>
 
     <section class="hero">

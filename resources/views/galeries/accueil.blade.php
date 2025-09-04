@@ -48,9 +48,6 @@
        <li class="nav-item">
        <a class="nav-link @if(Request::route()->getName() == 'galeries.index') active @endif" aria-current="page" href="{{ route('galeries.index') }}">Contenu de la galerie</a>
        </li>
-         <li class="nav-item">
-       <a class="nav-link @if(Request::route()->getName() == 'albums.index') active @endif" aria-current="page" href="{{ route('albums.index') }}">Albums</a>
-       </li>
        <li class="nav-item">
          <a class="nav-link active" aria-current="page" href="{{ route('admin') }}">Accueil</a>
         </li>

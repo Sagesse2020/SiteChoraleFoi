@@ -5,14 +5,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>{{ config('app.name') }} - Accueil</title>
 
+    <!-- Lien vers Font Awesome -->
+    <link rel="stylesheet" href="{{ asset('fontawesome/css/all.min.css') }}">
+
     <style>
-        /* Reset basique */
+        /* Ton CSS original inchangé */
         * {
             box-sizing: border-box;
             margin: 0;
             padding: 0;
         }
-
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             background: linear-gradient(135deg, #f0f8ff 0%, #d9e8ff 100%);
@@ -21,8 +23,6 @@
             display: flex;
             flex-direction: column;
         }
-
-        /* Navbar */
         .navbar {
             background-color: #0044cc;
             padding: 0.8rem 2rem;
@@ -34,29 +34,24 @@
             top: 0;
             z-index: 100;
         }
-
         .logo-container {
             display: flex;
             align-items: center;
         }
-
         .logo {
             width: 70px;
             transition: transform 0.3s ease, filter 0.3s ease;
             cursor: pointer;
         }
-
         .logo-container:hover .logo {
             transform: scale(1.15);
             filter: brightness(1.2);
         }
-
         .nav-links {
             display: flex;
             flex-wrap: wrap;
             gap: 1rem;
         }
-
         .nav-links a {
             color: #fff;
             font-weight: 600;
@@ -67,20 +62,19 @@
             font-size: 0.95rem;
             user-select: none;
         }
-
         .nav-links a:hover {
             background-color: #003399;
             color: #00ffd6;
         }
-
         .nav-links a.active {
             background-color: #00ffd6;
             color: #0044cc;
             font-weight: 700;
             box-shadow: 0 0 8px #00ffd6aa;
         }
-
-        /* Main content */
+        .nav-links a i {
+            margin-right: 6px;
+        }
         main.content {
             flex-grow: 1;
             display: flex;
@@ -90,22 +84,18 @@
             padding: 3rem 1rem;
             text-align: center;
         }
-
         main.content h1 {
             font-size: 3rem;
             color: #0044cc;
             margin-bottom: 1rem;
             text-shadow: 1px 1px 3px rgba(0,0,0,0.1);
         }
-
         main.content p {
             font-size: 1.3rem;
             max-width: 600px;
             color: #222;
             line-height: 1.6;
         }
-
-        /* Footer */
         footer {
             background-color: #001f33;
             text-align: center;
@@ -114,8 +104,6 @@
             font-size: 0.9rem;
             user-select: none;
         }
-
-        /* Responsive */
         @media (max-width: 768px) {
             .nav-links {
                 flex-direction: column;
@@ -127,16 +115,12 @@
                 padding: 1rem 1.5rem;
                 border-radius: 0 0 0 8px;
                 box-shadow: 0 4px 12px rgba(0,0,0,0.2);
-                display: none; /* Tu peux gérer un bouton menu plus tard */
+                display: none;
             }
             .nav-links.active {
                 display: flex;
             }
         }
-        .nav-links a i {
-        margin-right: 6px;
-        }
-
     </style>
 </head>
 <body>
@@ -147,15 +131,12 @@
             </a>
         </div>
         <nav class="nav-links">
-            <nav class="nav-links">
-            <a href="{{ route('welcome') }}"><i class="fas fa-home"></i> Accueil</a>
-            <a href="{{ route('publicites.index') }}"><i class="fas fa-bullhorn"></i> Publicités</a>
-            <a href="{{ route('publications.index') }}"><i class="fas fa-newspaper"></i> Publications</a>
-            <a href="{{ route('evenements.index') }}"><i class="fas fa-calendar-alt"></i> Événements</a>
-            <a href="{{ route('profile') }}"><i class="fas fa-user"></i> Profil</a>
-            <a href="{{ route('logout') }}"><i class="fas fa-sign-out-alt"></i> Déconnexion</a>
-        </nav>
-
+            <a href="{{ route('welcome') }}"><i class="fas fa-home"></i>Accueil</a>
+            <a href="{{ route('publicites.index') }}"><i class="fas fa-bullhorn"></i>Publicités</a>
+            <a href="{{ route('publications.index') }}"><i class="fas fa-newspaper"></i>Publications</a>
+            <a href="{{ route('evenements.index') }}"><i class="fas fa-calendar-alt"></i>Événements</a>
+            <a href="{{ route('profil') }}"><i class="fas fa-user"></i> Profil</a>
+            <a href="{{ route('logout') }}"><i class="fas fa-sign-out-alt"></i>Déconnexion</a>
         </nav>
     </header>
 

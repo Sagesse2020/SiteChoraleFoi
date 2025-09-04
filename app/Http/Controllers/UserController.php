@@ -57,9 +57,17 @@ class UserController extends Controller
     $user = Auth::user();
 
     // Vérifier l'ancien mot de passe
+    if ($request->filled('old-password')) {
     if (!Hash::check($request->input('old-password'), $user->password)) {
         return redirect()->back()->with('error', 'Ancien mot de passe incorrect.');
     }
+    if ($request->input('new-password') === $request->input('new-password_confirmation')) {
+        $user->password = bcrypt($request->input('new-password'));
+    } else {
+        return redirect()->back()->with('error', 'Les mots de passe ne coïncident pas.');
+    }
+}
+
 
     // Changer le mot de passe si nécessaire
     if ($request->input('new-password') && $request->input('new-password_confirmation')) {
@@ -89,27 +97,32 @@ class UserController extends Controller
 }
 
    public function updatePhoto(Request $request)
-    {
-        $request->validate([
-            'photo' => 'required|image|mimes:jpg,jpeg,png|max:2048'
-        ]);
+{
 
-        $user = Auth::user();
-        /** @var \App\Models\User $user */
-        $user = User::find(Auth::user()->id);
+    $request->validate([
+        'photo' => 'required|image|mimes:jpg,jpeg,png|max:2048'
+    ]);
 
+    $user = Auth::user();
 
-        // Supprimer l'ancienne photo si elle existe
-        if ($user->photo && Storage::exists('public/'.$user->photo)) {
-            Storage::delete('public/'.$user->photo);
-        }
-
-        // Stocker la nouvelle photo
-        $path = $request->file('photo')->store('avatars', 'public');
-        $user->photo = $path;
-        $user->save();
-
-        return redirect()->back()->with('success', 'Photo mise à jour avec succès.');
+    // Supprimer l'ancienne photo si elle existe
+    if ($user->photo && Storage::disk('public')->exists($user->photo)) {
+        Storage::disk('public')->delete($user->photo);
     }
+
+    // Stocker la nouvelle photo
+    /** @var \App\Models\User $user */
+    $user = Auth::user();
+
+    $path = $request->file('photo')->store('avatars', 'public');
+    $user->photo = $path;
+    $user->save();
+
+    return response()->json([
+    'success' => true,
+    'photo_url' => asset('storage/'.$user->photo)
+]);
+
+}
 
 }

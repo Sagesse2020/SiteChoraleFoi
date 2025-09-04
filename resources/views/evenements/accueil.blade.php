@@ -51,8 +51,6 @@
        <li class="nav-item">
          <a class="nav-link active" aria-current="page" href="{{ route('admin') }}">Accueil</a>
         </li>
-        <a class="nav-link @if(Request::route()->getName() == 'evenements.futur') active @endif" aria-current="page" href="{{ route('evenements.futur') }}">Futur événements</a>
-        </ul>
     </div>
 </body>
 </html>
